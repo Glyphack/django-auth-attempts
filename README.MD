@@ -59,32 +59,6 @@ X-Frame-Options: SAMEORIGIN
  :~$ http post http://127.0.0.1:8000/api-t-auth/ username=+9812345678 password=123qwe
 HTTP/1.1 403 Forbidden
 Allow: POST, OPTIONS
-Content-Length: 39
-Content-Type: application/json
-Date: Sun, 02 Jun 2019 06:39:58 GMT
-Server: WSGIServer/0.2 CPython/3.6.8
-X-Frame-Options: SAMEORIGIN
-
-{
-    "detail": "Invalid username/password."
-}
-
- :~$ http post http://127.0.0.1:8000/api-t-auth/ username=+9812345678 password=123qwe
-HTTP/1.1 403 Forbidden
-Allow: POST, OPTIONS
-Content-Length: 39
-Content-Type: application/json
-Date: Sun, 02 Jun 2019 06:39:59 GMT
-Server: WSGIServer/0.2 CPython/3.6.8
-X-Frame-Options: SAMEORIGIN
-
-{
-    "detail": "Invalid username/password."
-}
-
- :~$ http post http://127.0.0.1:8000/api-t-auth/ username=+9812345678 password=123qwe
-HTTP/1.1 403 Forbidden
-Allow: POST, OPTIONS
 Content-Length: 31
 Content-Type: application/json
 Date: Sun, 02 Jun 2019 06:40:01 GMT
