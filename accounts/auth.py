@@ -36,7 +36,6 @@ class ExampleAuthentication(authentication.BaseAuthentication):
 
 
 def is_ip_blocked(ip):
-    print(f"checking ip{ip}")
     cache_results = InvalidLoginAttemptsCache.get(ip)
     if cache_results and cache_results.get('lockout_start'):
         lockout_start = arrow.get(cache_results.get('lockout_start'))
