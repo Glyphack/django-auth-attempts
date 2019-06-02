@@ -71,7 +71,7 @@ def cache_login_attempt(username, request):
                                   timestamp > now.shift(minutes=-15).timestamp]
 
     invalid_attempt_timestamps.append(now.timestamp)
-    if len(invalid_attempt_timestamps) >= 5:
+    if len(invalid_attempt_timestamps) >= 3:
         lockout_timestamp = now.timestamp
 
     InvalidLoginAttemptsCache.set(username, invalid_attempt_timestamps, lockout_timestamp)
