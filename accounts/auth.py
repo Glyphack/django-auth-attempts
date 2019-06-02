@@ -53,7 +53,7 @@ def is_locked_out(username):
     cache_results = InvalidLoginAttemptsCache.get(username)
     if cache_results and cache_results.get('lockout_start'):
         lockout_start = arrow.get(cache_results.get('lockout_start'))
-        locked_out = lockout_start >= arrow.utcnow().shift(minutes=-15)
+        locked_out = lockout_start >= arrow.utcnow().shift(minutes=-60)
         if not locked_out:
             InvalidLoginAttemptsCache.delete(username)
         else:
@@ -68,7 +68,7 @@ def cache_login_attempt(username, request):
     now = arrow.utcnow()
     invalid_attempt_timestamps = cache_results['invalid_attempt_timestamps'] if cache_results else []
     invalid_attempt_timestamps = [timestamp for timestamp in invalid_attempt_timestamps if
-                                  timestamp > now.shift(minutes=-15).timestamp]
+                                  timestamp > now.shift(minutes=-60).timestamp]
 
     invalid_attempt_timestamps.append(now.timestamp)
     if len(invalid_attempt_timestamps) >= 3:
